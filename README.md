@@ -1,10 +1,5 @@
 # Sistema CRUD - Gestor de Personas
 
-## Integrantes
-
-- Gabriel Plata - 01240372047
-- Valery Montes - 01240372023
-
 ## Descripción
 
 Este proyecto consiste en un sistema CRUD desarrollado en Python utilizando Gradio.

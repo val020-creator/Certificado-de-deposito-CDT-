@@ -1,224 +1,43 @@
-# 💰 Simulador de Certificado de Depósito a Término (CDT)
+# Sistema CRUD - Gestor de Personas
 
-## 📌 Descripción
+## Integrantes
 
-Este proyecto consiste en un programa desarrollado en **Python** que permite calcular y proyectar el saldo de un **Certificado de Depósito a Término (CDT)** a partir de un monto inicial y un plazo determinado en meses.
+- Gabriel Plata - 01240372047
+- Valery Montes - 01240372023
 
-El programa calcula automáticamente la tasa de interés mensual de acuerdo con el plazo seleccionado y proyecta el crecimiento del dinero mes a mes, mostrando los intereses generados y el saldo acumulado.
+## Descripción
 
----
+Este proyecto consiste en un sistema CRUD desarrollado en Python utilizando Gradio.
 
-## 🎯 Objetivo
+El sistema permite gestionar registros de personas mediante una interfaz gráfica sencilla. Los registros se almacenan temporalmente en una lista y pueden ser agregados, consultados, editados o eliminados.
 
-Desarrollar un módulo que permita:
+También permite exportar los registros almacenados a un archivo CSV.
 
-* Solicitar un monto inicial en pesos.
-* Solicitar el plazo del CDT en meses.
-* Validar que el monto sea mayor que `0`.
-* Validar que el plazo sea un número entero mayor o igual a `1`.
-* Calcular la tasa mensual según el plazo.
-* Calcular los intereses generados cada mes.
-* Proyectar el saldo acumulado durante todo el plazo.
-* Mostrar una tabla con la evolución mensual del CDT.
-* Mostrar el saldo final y el total de dinero ganado.
+## Funcionalidades
 
----
+El sistema cuenta con las siguientes operaciones:
 
-## 📐 Fórmula utilizada
+- **Agregar persona:** permite registrar una persona ingresando nombre, apellido, edad y ciudad.
+- **Ver personas:** muestra los registros almacenados y permite actualizar la lista.
+- **Editar persona:** permite cargar un registro y modificar sus datos.
+- **Eliminar persona:** permite eliminar un registro utilizando su número de índice.
+- **Exportar a CSV:** permite descargar los registros en un archivo `personas.csv`.
 
-La tasa mensual se calcula mediante la siguiente fórmula:
+## Validaciones
 
-```text
-tasaMensual (%) = 0,001695 × plazo + 0,0983
-```
+El sistema realiza algunas validaciones antes de guardar los datos:
 
-Para cada mes se calcula el interés mediante:
+- Los campos de nombre, apellido y ciudad no pueden estar vacíos.
+- La edad debe ser un número.
+- La edad debe estar entre 1 y 120 años.
+- El índice utilizado para editar o eliminar debe corresponder a un registro existente.
 
-```text
-interes = saldoAnterior × (tasaMensual / 100)
-```
+## Tecnologías utilizadas
 
-Posteriormente, se actualiza el saldo:
+- **Python**
+- **Google Colab**
+- **Gradio**
+- **CSV**
 
-```text
-saldoNuevo = saldoAnterior + interes
-```
-
-La tasa calculada según el plazo se mantiene constante durante toda la proyección.
-
----
-
-## ⚙️ Funcionamiento
-
-El programa sigue el siguiente proceso:
-
-```text
-Inicio
-  ↓
-Solicitar monto inicial
-  ↓
-¿Monto > 0?
-  ├── No → Mostrar error y volver a solicitar
-  └── Sí
-        ↓
-Solicitar plazo
-        ↓
-¿Plazo >= 1 y es entero?
-  ├── No → Mostrar error y volver a solicitar
-  └── Sí
-        ↓
-Calcular tasa mensual
-        ↓
-Inicializar saldo
-        ↓
-Calcular interés de cada mes
-        ↓
-Actualizar saldo
-        ↓
-Guardar resultados
-        ↓
-Mostrar tabla mensual
-        ↓
-Mostrar saldo final y total ganado
-        ↓
-Fin
-```
-
----
-
-## 📊 Información mostrada
-
-La tabla de resultados contiene:
-
-| Campo       | Descripción                          |
-| ----------- | ------------------------------------ |
-| **Mes**     | Número del mes de la proyección      |
-| **Interés** | Dinero generado durante ese mes      |
-| **Saldo**   | Dinero acumulado al finalizar el mes |
-
-El **mes 0** corresponde al momento inicial del CDT, antes de generar intereses.
-
----
-
-## 🛡️ Validaciones
-
-El programa cuenta con validaciones para evitar datos incorrectos:
-
-### Monto inicial
-
-Debe ser un número mayor que `0`.
-
-Ejemplo válido:
-
-```text
-Ingrese el monto inicial en pesos: $1000000
-```
-
-Ejemplos no válidos:
-
-```text
--500000
-0
-```
-
-### Plazo
-
-Debe ser un número entero mayor o igual a `1`.
-
-Ejemplo válido:
-
-```text
-Ingrese el plazo en meses: 12
-```
-
-Ejemplos no válidos:
-
-```text
-0
--5
-2.5
-```
-
-Si se introduce un valor incorrecto, el programa muestra un mensaje de error y vuelve a solicitar el dato.
-
----
-
-## 🧮 Ejemplo
-
-Si el usuario ingresa:
-
-```text
-Monto inicial: $1.000.000
-Plazo: 12 meses
-```
-
-El programa calcula primero la tasa mensual:
-
-```text
-tasaMensual = 0,001695 × 12 + 0,0983
-```
-
-Después realiza el cálculo correspondiente para cada uno de los 12 meses y muestra la evolución del saldo.
-
-Al finalizar, se presenta:
-
-```text
-Monto inicial
-Plazo
-Tasa mensual
-Saldo final
-Total ganado
-```
-
----
-
-## 💻 Tecnologías utilizadas
-
-* **Python 3**
-* Estructuras de control `while` y `for`
-* Manejo de excepciones con `try` / `except`
-* Listas para almacenar resultados
-* Operaciones matemáticas
-* Formateo de datos para presentación en consola
-
----
-
-## 📁 Estructura del proyecto
-
-```text
-CDT/
-│
-├── CDT.py
-└── README.md
-```
-
-### `CDT.py`
-
-Contiene el código principal del simulador del Certificado de Depósito a Término.
-
-### `README.md`
-
-Contiene la documentación, descripción, fórmulas, funcionamiento y validaciones del proyecto.
-
----
-
-## 🚀 Ejecución
-
-1. Descargar o clonar el repositorio.
-2. Abrir el archivo `CDT.py`.
-3. Ejecutar el programa utilizando Python 3.
-4. Ingresar el monto inicial.
-5. Ingresar el plazo en meses.
-6. Consultar la proyección y el resultado final.
-
-Para ejecutar desde una terminal:
-
-```bash
-python CDT.py
-```
-
----
-
-## 👨‍💻 Autores
-Valery Montes Echavez y 
-Jose Gabriel Plata Ariza
+# Autores
+Valery Montes Echaves y Jose Gabriel Plata Ariza

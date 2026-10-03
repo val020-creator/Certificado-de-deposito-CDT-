@@ -1,38 +1,88 @@
-# Sistema CRUD - Gestor de Personas
+# 💰 Calculador de Certificado de Depósito a Término (CDT)
 
-## Descripción
+Aplicación desarrollada en **Python** que permite calcular y proyectar el crecimiento de un **Certificado de Depósito a Término (CDT)** durante un plazo determinado.
 
-Este proyecto consiste en un sistema CRUD desarrollado en Python utilizando Gradio.
+El sistema utiliza una interfaz gráfica desarrollada con **Gradio** y permite realizar operaciones de registro, consulta, edición, eliminación y exportación de los CDTs.
 
-El sistema permite gestionar registros de personas mediante una interfaz gráfica sencilla. Los registros se almacenan temporalmente en una lista y pueden ser agregados, consultados, editados o eliminados.
+---
 
-También permite exportar los registros almacenados a un archivo CSV.
+## 📌 Descripción del proyecto
 
-## Funcionalidades
+Un Certificado de Depósito a Término (CDT) es un producto financiero en el que una persona deposita una cantidad de dinero durante un plazo determinado, generando intereses durante ese período.
 
-El sistema cuenta con las siguientes operaciones:
+Este proyecto permite ingresar:
 
-- **Agregar persona:** permite registrar una persona ingresando nombre, apellido, edad y ciudad.
-- **Ver personas:** muestra los registros almacenados y permite actualizar la lista.
-- **Editar persona:** permite cargar un registro y modificar sus datos.
-- **Eliminar persona:** permite eliminar un registro utilizando su número de índice.
-- **Exportar a CSV:** permite descargar los registros en un archivo `personas.csv`.
+- Monto inicial del CDT.
+- Plazo en meses.
 
-## Validaciones
+A partir de estos datos, el sistema calcula la tasa mensual y genera una proyección del saldo para cada mes del plazo seleccionado.
 
-El sistema realiza algunas validaciones antes de guardar los datos:
+Los cálculos internos mantienen todos los decimales disponibles. Los valores mostrados en la interfaz se presentan redondeados a **dos decimales**.
 
-- Los campos de nombre, apellido y ciudad no pueden estar vacíos.
-- La edad debe ser un número.
-- La edad debe estar entre 1 y 120 años.
-- El índice utilizado para editar o eliminar debe corresponder a un registro existente.
+---
 
-## Tecnologías utilizadas
+## 🎯 Objetivo
 
-- **Python**
-- **Google Colab**
-- **Gradio**
-- **CSV**
+Desarrollar una aplicación sencilla que permita registrar y administrar CDTs, calcular su crecimiento mensual y visualizar la proyección del saldo mediante una interfaz gráfica.
 
-# Autores
-Valery Montes Echaves y Jose Gabriel Plata Ariza
+---
+
+## ⚙️ Funcionalidades
+
+El sistema cuenta con las siguientes opciones:
+
+### ➕ Agregar
+
+Permite registrar un nuevo CDT ingresando:
+
+- Monto inicial.
+- Plazo en meses.
+
+El sistema calcula automáticamente la tasa mensual y genera la proyección del CDT.
+
+---
+
+### 👁️ Ver / Imprimir proyección
+
+Permite seleccionar un CDT mediante su ID y visualizar su proyección mensual.
+
+La tabla muestra:
+
+| Campo | Descripción |
+|---|---|
+| Mes | Número del mes de la proyección |
+| Interés | Interés generado durante el mes |
+| Saldo | Saldo acumulado |
+
+Los valores monetarios se muestran con dos decimales.
+
+---
+
+### ✏️ Editar
+
+Permite modificar los datos de un CDT existente utilizando su ID.
+
+Al realizar la modificación, el sistema genera nuevamente la proyección con los nuevos datos.
+
+---
+
+### 🗑️ Eliminar
+
+Permite eliminar un CDT registrado utilizando su ID.
+
+Después de eliminarlo, la tabla principal se actualiza automáticamente.
+
+---
+
+### 📥 Descargar CSV
+
+Permite exportar los CDTs registrados a un archivo llamado:
+
+```text
+cdt.csv
+```
+---
+## Autores
+
+- Valery Montes Echavez  - 01240372023
+- Jose Gabriel Plata Ariza - 01240372047
